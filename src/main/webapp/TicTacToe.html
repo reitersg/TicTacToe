@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Title</title>
+	<link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <script type="application/javascript">
+        var xQueue = [];
+        var oQueue = [];
+        var button11;
+        var button12;
+        var button13;
+        var button14;
+        var button21;
+        var button22;
+        var button23;
+        var button24;
+        var button31;
+        var button32;
+        var button33;
+        var button34;
+        var button41;
+        var button42;
+        var button43;
+        var button44;
+        function getAllValues() {
+            button11 = document.getElementById("button11").value;
+            button12 = document.getElementById("button12").value;
+            button13 = document.getElementById("button13").value;
+            button14 = document.getElementById("button14").value;
+            button21 = document.getElementById("button21").value;
+            button22 = document.getElementById("button22").value;
+            button23 = document.getElementById("button23").value;
+            button24 = document.getElementById("button24").value;
+            button31 = document.getElementById("button31").value;
+            button32 = document.getElementById("button32").value;
+            button33 = document.getElementById("button33").value;
+            button34 = document.getElementById("button34").value;
+            button41 = document.getElementById("button41").value;
+            button42 = document.getElementById("button42").value;
+            button43 = document.getElementById("button43").value;
+            button44 = document.getElementById("button44").value;
+        }
+        function changeButton(buttonClicked) {
+            if (buttonClicked.value == "") {
+                xQueue.push(buttonClicked);
+                buttonClicked.value = "X";
+                computerTurn();
+                checkWinX();
+                checkWinO();
+            }
+            if (xQueue.length == 5) {
+                var oldestButton = xQueue.shift();
+                makeBlank(oldestButton)
+            }
+        }
+        function makeBlank(button) {
+            var row = button.id.charAt(6);
+            var col = button.id.charAt(7);
+            document.getElementById("button" + row + col).value = ""
+        }
+        function computerTurn() {
+            var randomRow = Math.floor((Math.random() * 4) + 1);
+            var randomCol = Math.floor((Math.random() * 4) + 1);
+            var button = document.getElementById("button" + randomRow + randomCol);
+            if (oQueue.length == 4) {
+                var oldestButton = oQueue.shift();
+                makeBlank(oldestButton)
+            }
+            if (button.value == "") {
+                button.value = "O";
+                oQueue.push(button);
+                checkWinX();
+                checkWinO();
+            }
+            else {
+                computerTurn()
+            }
+
+        }
+
+
+
+        function checkWinX() {
+            getAllValues();
+            if ((button11 == "X") && (button12 == "X") && (button13 == "X") && (button14 == "X")) {
+                alert("You Win!");
+                reset()
+            }
+            if ((button21 == "X") && (button22 == "X") && (button23 == "X") && (button24 == "X")) {
+                alert("You Win!");
+                reset()
+            }
+            if ((button31 == "X") && (button32 == "X") && (button33 == "X") && (button34 == "X")) {
+                alert("You Win!");
+                reset()
+            }
+            if ((button41 == "X") && (button42 == "X") && (button43 == "X") && (button44 == "X")) {
+                alert("You Win!");
+                reset()
+            }
+            if ((button11 == "X") && (button22 == "X") && (button33 == "X") && (button44 == "X")) {
+                alert("You Win!");
+                reset()
+            }
+            if ((button41 == "X") && (button32 == "X") && (button23 == "X") && (button14 == "X")) {
+                alert("You Win!");
+                reset()
+            }
+            if ((button11 == "X") && (button21 == "X") && (button31 == "X") && (button41 == "X")) {
+                alert("You Win!");
+                reset()
+            }
+            if ((button12 == "X") && (button22 == "X") && (button32 == "X") && (button42 == "X")) {
+                alert("You Win!");
+                reset()
+            }
+            if ((button13 == "X") && (button23 == "X") && (button33 == "X") && (button43 == "X")) {
+                alert("You Win!");
+                reset()
+            }
+            if ((button14 == "X") && (button24 == "X") && (button34 == "X") && (button44 == "X")) {
+                alert("You Win!");
+                reset()
+            }
+        }
+        function checkWinO() {
+            getAllValues();
+            if ((button11 == "O") && (button12 == "O") && (button13 == "O") && (button14 == "O")) {
+                alert("You Lose!");
+                reset()
+            }
+            if ((button21 == "O") && (button22 == "O") && (button23 == "O") && (button24 == "O")) {
+                alert("You Lose!");
+                reset()
+            }
+            if ((button31 == "O") && (button32 == "O") && (button33 == "O") && (button34 == "O")) {
+                alert("You Lose!");
+                reset()
+            }
+            if ((button41 == "O") && (button42 == "O") && (button43 == "O") && (button44 == "O")) {
+                alert("You Lose!");
+                reset()
+            }
+            if ((button11 == "O") && (button22 == "O") && (button33 == "O") && (button44 == "O")) {
+                alert("You Lose!");
+                reset()
+            }
+            if ((button41 == "O") && (button32 == "O") && (button23 == "O") && (button14 == "O")) {
+                alert("You Lose!");
+                reset()
+            }
+            if ((button11 == "O") && (button21 == "O") && (button31 == "O") && (button41 == "O")) {
+                alert("You Lose!");
+                reset()
+            }
+            if ((button12 == "O") && (button22 == "O") && (button32 == "O") && (button42 == "O")) {
+                alert("You Lose!");
+                reset()
+            }
+            if ((button13 == "O") && (button23 == "O") && (button33 == "O") && (button43 == "O")) {
+                alert("You Lose!");
+                reset()
+            }
+            if ((button14 == "O") && (button24 == "O") && (button34 == "O") && (button44 == "O")) {
+                alert("You Lose!");
+                reset()
+            }
+
+        }
+        function reset() {
+            document.getElementById("button11").value = "";
+            document.getElementById("button12").value = "";
+            document.getElementById("button13").value = "";
+            document.getElementById("button14").value = "";
+            document.getElementById("button21").value = "";
+            document.getElementById("button22").value = "";
+            document.getElementById("button23").value = "";
+            document.getElementById("button24").value = "";
+            document.getElementById("button31").value = "";
+            document.getElementById("button32").value = "";
+            document.getElementById("button33").value = "";
+            document.getElementById("button34").value = "";
+            document.getElementById("button41").value = "";
+            document.getElementById("button42").value = "";
+            document.getElementById("button43").value = "";
+            document.getElementById("button44").value = "";
+            xQueue = [];
+            oQueue = [];
+        }
+    </script>
+</head>
+<body>
+<div class="container-fluid text-center">
+<h4>Welcome to TICTACTOE</h4>
+</div>
+<div class="table-bordered">
+<table class="table">
+
+    <tr>
+        <div class="btn-group">
+       <td><input type="button" class="btn btn-large btn-block" id="button11" onclick="changeButton(this)"/></td></div>
+        <td><input type="button" class="btn btn-large btn-block" id="button12" onclick="changeButton(this)"/></td></div>
+        <td><input type="button" class="btn btn-large btn-block" id="button13" onclick="changeButton(this)"/></td>
+        <td><input type="button" class="btn btn-large btn-block" id="button14" onclick="changeButton(this)"/></td>
+    </div>
+</tr>
+
+
+    <tr>
+        <div class="btn-group">
+        <td><input type="button" class="btn btn-large btn-block" id="button21" onclick="changeButton(this)"/></td>
+        <td><input type="button"class="btn btn-large btn-block" id="button22" onclick="changeButton(this)"/></td>
+        <td><input type="button"class="btn btn-large btn-block" id="button23" onclick="changeButton(this)"/></td>
+        <td><input type="button"class="btn btn-large btn-block" id="button24" onclick="changeButton(this)"/></td>
+        </div>
+    </tr>
+
+    <tr>
+        <div class="btn-group">
+        <td><input type="button"class="btn btn-large btn-block" id="button31" onclick="changeButton(this)"/></td>
+        <td><input type="button"class="btn btn-large btn-block" id="button32" onclick="changeButton(this)"/></td>
+        <td><input type="button"class="btn btn-large btn-block" id="button33" onclick="changeButton(this)"/></td>
+        <td><input type="button"class="btn btn-large btn-block" id="button34" onclick="changeButton(this)"/></td>
+        </div>
+    </tr>
+
+    <tr>
+        <div class="btn-group">
+        <td><input type="button"class="btn btn-large btn-block" id="button41" onclick="changeButton(this)"/></td>
+        <td><input type="button"class="btn btn-large btn-block" id="button42" onclick="changeButton(this)"/></td>
+        <td><input type="button" class="btn btn-large btn-block" id="button43" onclick="changeButton(this)"/></td>
+        <td><input type="button"class="btn btn-large btn-block" id="button44" onclick="changeButton(this)"/></td>
+        </div>
+    </tr>
+
+</table>
+    </div>
+</body>
+</html>
